@@ -54,30 +54,32 @@ export default function FlightTicket({ result }: FlightTicketProps) {
   useEffect(() => {
     if (!result.success || !result.data) return;
 
+    const flightData = result.data; // Store for TypeScript narrowing
+
     const fetchAircraftData = async () => {
       setIsLoadingAircraft(true);
       
-      // Step 1: Try Aviation Stack (already in result.data.aircraft)
-      if (result.data.aircraft && result.data.aircraft.iata) {
+      // Step 1: Try Aviation Stack (already in flightData.aircraft)
+      if (flightData.aircraft && flightData.aircraft.iata) {
         setAircraftDataSource({
           source: "aviation-stack",
-          iata: result.data.aircraft.iata,
-          icao: result.data.aircraft.icao || null,
-          registration: result.data.aircraft.registration || null,
+          iata: flightData.aircraft.iata,
+          icao: flightData.aircraft.icao || null,
+          registration: flightData.aircraft.registration || null,
         });
         setIsLoadingAircraft(false);
         return;
       }
 
       // Step 2: Try ICAO mapping (if we have ICAO from Aviation Stack but no IATA)
-      if (result.data.aircraft && result.data.aircraft.icao && !result.data.aircraft.iata) {
-        const mappedIata = icaoToIata(result.data.aircraft.icao);
+      if (flightData.aircraft && flightData.aircraft.icao && !flightData.aircraft.iata) {
+        const mappedIata = icaoToIata(flightData.aircraft.icao);
         if (mappedIata) {
           setAircraftDataSource({
             source: "icao-mapping",
             iata: mappedIata,
-            icao: result.data.aircraft.icao,
-            registration: result.data.aircraft.registration || null,
+            icao: flightData.aircraft.icao,
+            registration: flightData.aircraft.registration || null,
           });
           setIsLoadingAircraft(false);
           return;
@@ -86,9 +88,9 @@ export default function FlightTicket({ result }: FlightTicketProps) {
 
       // Step 3: Try OpenSky for active flights (get registration)
       let openskyRegistration = null;
-      if (isFlightLikelyActive(result.data.departure.scheduled)) {
+      if (isFlightLikelyActive(flightData.departure.scheduled)) {
         try {
-          const openskyData = await searchOpenSkyAircraft(result.data.flightNumber);
+          const openskyData = await searchOpenSkyAircraft(flightData.flightNumber);
           if (openskyData.success && openskyData.icao24) {
             openskyRegistration = openskyData.icao24;
           }
@@ -99,16 +101,16 @@ export default function FlightTicket({ result }: FlightTicketProps) {
 
       // Step 4: Route-based inference (for aircraft type)
       const routeInference = inferAircraftFromRoute({
-        origin: result.data.departure.iata,
-        destination: result.data.arrival.iata,
-        airline: result.data.airline,
+        origin: flightData.departure.iata,
+        destination: flightData.arrival.iata,
+        airline: flightData.airline,
       });
 
       if (routeInference) {
         setAircraftDataSource({
           source: "route-inference",
           iata: routeInference.iata,
-          registration: openskyRegistration || result.data.aircraft?.registration || null,
+          registration: openskyRegistration || flightData.aircraft?.registration || null,
           isEstimated: true,
           confidence: routeInference.confidence,
           reason: routeInference.reason,
@@ -122,7 +124,7 @@ export default function FlightTicket({ result }: FlightTicketProps) {
         setAircraftDataSource({
           source: "opensky",
           registration: openskyRegistration,
-          callsign: result.data.flightNumber,
+          callsign: flightData.flightNumber,
         });
         setIsLoadingAircraft(false);
         return;
