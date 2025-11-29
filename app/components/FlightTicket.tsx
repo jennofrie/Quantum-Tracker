@@ -554,21 +554,21 @@ export default function FlightTicket({ result }: FlightTicketProps) {
               className="px-6 sm:px-8 py-6 border-t border-white/10"
             >
               <div className="flex items-center gap-2 mb-4">
-                <Cloud className="w-4 h-4 text-teal-500" />
+                <Cloud className="w-4 h-4 text-amber-electric" />
                 <h4 className="text-xs font-cinzel text-silver-metallic/80 uppercase tracking-wider">
                   Destination Intelligence
                 </h4>
               </div>
 
               {/* Local Time Display */}
-              <div className="mb-6 p-4 glass-surface rounded-xl border border-teal-500/20">
+              <div className="mb-6 p-4 glass-surface rounded-xl border border-amber-electric/20">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-1">
                       Current Local Time
                     </p>
                     <div className="flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-teal-500" />
+                      <Clock className="w-5 h-5 text-amber-electric" />
                       <span className="text-2xl font-jetbrains font-bold text-white">
                         {weatherData.localTime}
                       </span>
@@ -602,13 +602,13 @@ export default function FlightTicket({ result }: FlightTicketProps) {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.8 + index * 0.1 }}
-                        className="glass-surface p-3 rounded-xl border border-white/5 hover:border-teal-500/30 transition-colors"
+                        className="glass-surface p-3 rounded-xl border border-white/5 hover:border-amber-electric/30 transition-colors"
                       >
                         <p className="text-[10px] font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-2">
                           {day.date}
                         </p>
                         <div className="flex items-center justify-center mb-2">
-                          <WeatherIcon className="w-8 h-8 text-teal-500" />
+                          <WeatherIcon className="w-8 h-8 text-amber-electric" />
                         </div>
                         <p className="text-xl font-jetbrains font-bold text-white text-center mb-1">
                           {day.temp}°F
