@@ -1,0 +1,213 @@
+{
+  "B737": {
+    "model": "Boeing 737-800",
+    "manufacturer": "Boeing",
+    "range": 3060,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=738"
+  },
+  "B738": {
+    "model": "Boeing 737-800",
+    "manufacturer": "Boeing",
+    "range": 3060,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=738"
+  },
+  "B739": {
+    "model": "Boeing 737-900",
+    "manufacturer": "Boeing",
+    "range": 3235,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=739"
+  },
+  "B38M": {
+    "model": "Boeing 737 MAX 8",
+    "manufacturer": "Boeing",
+    "range": 3550,
+    "cruiseSpeed": 521,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=7M8"
+  },
+  "B39M": {
+    "model": "Boeing 737 MAX 9",
+    "manufacturer": "Boeing",
+    "range": 3550,
+    "cruiseSpeed": 521,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=7M9"
+  },
+  "B763": {
+    "model": "Boeing 767-300",
+    "manufacturer": "Boeing",
+    "range": 5990,
+    "cruiseSpeed": 528,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=763"
+  },
+  "B772": {
+    "model": "Boeing 777-200",
+    "manufacturer": "Boeing",
+    "range": 5240,
+    "cruiseSpeed": 560,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=772"
+  },
+  "B773": {
+    "model": "Boeing 777-300ER",
+    "manufacturer": "Boeing",
+    "range": 7370,
+    "cruiseSpeed": 560,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=77W"
+  },
+  "B77W": {
+    "model": "Boeing 777-300ER",
+    "manufacturer": "Boeing",
+    "range": 7370,
+    "cruiseSpeed": 560,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=77W"
+  },
+  "B788": {
+    "model": "Boeing 787-8 Dreamliner",
+    "manufacturer": "Boeing",
+    "range": 7355,
+    "cruiseSpeed": 561,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=788"
+  },
+  "B789": {
+    "model": "Boeing 787-9 Dreamliner",
+    "manufacturer": "Boeing",
+    "range": 7635,
+    "cruiseSpeed": 561,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=789"
+  },
+  "B78X": {
+    "model": "Boeing 787-10 Dreamliner",
+    "manufacturer": "Boeing",
+    "range": 6430,
+    "cruiseSpeed": 561,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=78J"
+  },
+  "A319": {
+    "model": "Airbus A319",
+    "manufacturer": "Airbus",
+    "range": 3700,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=319"
+  },
+  "A320": {
+    "model": "Airbus A320",
+    "manufacturer": "Airbus",
+    "range": 3300,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=320"
+  },
+  "A321": {
+    "model": "Airbus A321",
+    "manufacturer": "Airbus",
+    "range": 3200,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=321"
+  },
+  "A20N": {
+    "model": "Airbus A320neo",
+    "manufacturer": "Airbus",
+    "range": 3400,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=32N"
+  },
+  "A21N": {
+    "model": "Airbus A321neo",
+    "manufacturer": "Airbus",
+    "range": 4000,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=32Q"
+  },
+  "A332": {
+    "model": "Airbus A330-200",
+    "manufacturer": "Airbus",
+    "range": 7250,
+    "cruiseSpeed": 541,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=332"
+  },
+  "A333": {
+    "model": "Airbus A330-300",
+    "manufacturer": "Airbus",
+    "range": 6350,
+    "cruiseSpeed": 541,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=333"
+  },
+  "A339": {
+    "model": "Airbus A330-900neo",
+    "manufacturer": "Airbus",
+    "range": 7200,
+    "cruiseSpeed": 541,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=339"
+  },
+  "A359": {
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "range": 8100,
+    "cruiseSpeed": 561,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=359"
+  },
+  "A35K": {
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "range": 8700,
+    "cruiseSpeed": 561,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=351"
+  },
+  "A388": {
+    "model": "Airbus A380-800",
+    "manufacturer": "Airbus",
+    "range": 8000,
+    "cruiseSpeed": 560,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=388"
+  },
+  "E190": {
+    "model": "Embraer E190",
+    "manufacturer": "Embraer",
+    "range": 2400,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=E90"
+  },
+  "E195": {
+    "model": "Embraer E195",
+    "manufacturer": "Embraer",
+    "range": 2200,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=E95"
+  },
+  "BCS3": {
+    "model": "Airbus A220-300",
+    "manufacturer": "Airbus",
+    "range": 3400,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=223"
+  },
+  "BCS1": {
+    "model": "Airbus A220-100",
+    "manufacturer": "Airbus",
+    "range": 3100,
+    "cruiseSpeed": 514,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=221"
+  },
+  "B744": {
+    "model": "Boeing 747-400",
+    "manufacturer": "Boeing",
+    "range": 7260,
+    "cruiseSpeed": 567,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=744"
+  },
+  "B748": {
+    "model": "Boeing 747-8",
+    "manufacturer": "Boeing",
+    "range": 7730,
+    "cruiseSpeed": 570,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=748"
+  },
+  "DH4": {
+    "model": "Bombardier Dash 8 Q400",
+    "manufacturer": "Bombardier",
+    "range": 1200,
+    "cruiseSpeed": 360,
+    "seatMapUrl": "https://www.seatguru.com/airlines/airline_search_results.php?aircraft=DH4"
+  }
+}
+
