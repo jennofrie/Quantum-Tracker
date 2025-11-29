@@ -32,7 +32,7 @@ export const saveFlightToHistory = (flightNumber: string): void => {
 
     // Add new search at the beginning
     const newHistory: FlightHistoryItem[] = [
-      { mode: "flight-status", flightNumber, timestamp: Date.now() },
+      { mode: "flight-status" as const, flightNumber, timestamp: Date.now() },
       ...filteredHistory,
     ].slice(0, MAX_HISTORY);
 
@@ -59,7 +59,7 @@ export const saveTripToHistory = (tripData: TripData): void => {
 
     // Add new search at the beginning
     const newHistory: FlightHistoryItem[] = [
-      { mode: "trip-planning", tripData, timestamp: Date.now() },
+      { mode: "trip-planning" as const, tripData, timestamp: Date.now() },
       ...filteredHistory,
     ].slice(0, MAX_HISTORY);
 
