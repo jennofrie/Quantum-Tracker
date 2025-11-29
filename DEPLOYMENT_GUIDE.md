@@ -58,10 +58,10 @@ In Netlify Site Settings → Environment Variables, add these **4 variables**:
 
 | Variable Name | Value |
 |---------------|-------|
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://cusodhwwhzhmetdplkuy.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1c29kaHd3aHpobWV0ZHBsa3V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQzOTAxNDQsImV4cCI6MjA3OTk2NjE0NH0.EziC8OL0yhMfmR-2roHlVcH_RJZh7x7c6QXTMND2oWw` |
-| `AVIATION_STACK_API_KEY` | `eeb36f887a22bdf379ec3c76ad342845` |
-| `OPENWEATHERMAP_API_KEY` | `f7d855deb94fa98d91ba9e5f1b57ca7c` (optional but recommended) |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://your-project-id.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `your_supabase_anon_key_here` |
+| `AVIATION_STACK_API_KEY` | `your_aviation_stack_api_key_here` |
+| `OPENWEATHERMAP_API_KEY` | `your_openweathermap_api_key_here` (optional but recommended) |
 
 Click **"Save"** after adding all variables.
 
@@ -128,9 +128,9 @@ http://localhost:3000/**
 ## 📝 Quick Reference
 
 **Your Environment Variables:**
-- Supabase URL: `https://cusodhwwhzhmetdplkuy.supabase.co`
-- Supabase Key: (the long JWT token)
-- Aviation Stack Key: `eeb36f887a22bdf379ec3c76ad342845`
+- Supabase URL: `https://your-project-id.supabase.co`
+- Supabase Key: (your JWT token from Supabase dashboard)
+- Aviation Stack Key: (your API key from Aviation Stack dashboard)
 
 **Files Modified:**
 - ✓ `package.json` - Added Supabase dependency

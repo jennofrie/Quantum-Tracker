@@ -72,8 +72,10 @@ The application requires two API keys:
 ### 1. Aviation Stack API
 Used for real-time flight data. The key is configured in `.env.local`:
 ```
-AVIATION_STACK_API_KEY=eeb36f887a22bdf379ec3c76ad342845
+AVIATION_STACK_API_KEY=your_aviation_stack_api_key_here
 ```
+
+**Get your free Aviation Stack API key**: [https://aviationstack.com/](https://aviationstack.com/)
 
 ### 2. OpenWeatherMap API (for Destination Intelligence)
 Required for weather forecasts at arrival destinations. Add your key to `.env.local`:
