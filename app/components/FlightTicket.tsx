@@ -40,11 +40,23 @@ export default function FlightTicket({ result }: FlightTicketProps) {
   useEffect(() => {
     if (result.success && result.data) {
       const fetchWeather = async () => {
-        const weather = await getDestinationWeather(
-          result.data!.arrival.iata,
-          result.data!.arrival.timezone
-        );
-        setWeatherData(weather);
+        try {
+          const weather = await getDestinationWeather(
+            result.data!.arrival.iata,
+            result.data!.arrival.timezone
+          );
+          setWeatherData(weather);
+          // Log for debugging
+          if (!weather.success) {
+            console.warn("Weather data unavailable:", weather.error);
+          }
+        } catch (error) {
+          console.error("Error fetching weather:", error);
+          setWeatherData({
+            success: false,
+            error: error instanceof Error ? error.message : "Failed to fetch weather data",
+          });
+        }
       };
       fetchWeather();
     }
@@ -533,82 +545,105 @@ export default function FlightTicket({ result }: FlightTicketProps) {
         </div>
 
         {/* Destination Intelligence Section */}
-        {weatherData?.success && weatherData.forecast && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="px-6 sm:px-8 py-6 border-t border-white/10"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Cloud className="w-4 h-4 text-teal-500" />
-              <h4 className="text-xs font-cinzel text-silver-metallic/80 uppercase tracking-wider">
-                Destination Intelligence
-              </h4>
-            </div>
+        {weatherData && (
+          weatherData.success && weatherData.forecast ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="px-6 sm:px-8 py-6 border-t border-white/10"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Cloud className="w-4 h-4 text-teal-500" />
+                <h4 className="text-xs font-cinzel text-silver-metallic/80 uppercase tracking-wider">
+                  Destination Intelligence
+                </h4>
+              </div>
 
-            {/* Local Time Display */}
-            <div className="mb-6 p-4 glass-surface rounded-xl border border-teal-500/20">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-1">
-                    Current Local Time
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-teal-500" />
-                    <span className="text-2xl font-jetbrains font-bold text-white">
-                      {weatherData.localTime}
-                    </span>
-                    <span className="text-sm font-jetbrains text-silver-metallic">
-                      ({data.arrival.timezone})
-                    </span>
+              {/* Local Time Display */}
+              <div className="mb-6 p-4 glass-surface rounded-xl border border-teal-500/20">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-1">
+                      Current Local Time
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-teal-500" />
+                      <span className="text-2xl font-jetbrains font-bold text-white">
+                        {weatherData.localTime}
+                      </span>
+                      <span className="text-sm font-jetbrains text-silver-metallic">
+                        ({data.arrival.timezone})
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-1">
+                      At {data.arrival.iata}
+                    </p>
+                    <p className="text-sm font-playfair text-white/70">
+                      {data.arrival.airport.split(" ").slice(0, 2).join(" ")}
+                    </p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-1">
-                    At {data.arrival.iata}
-                  </p>
-                  <p className="text-sm font-playfair text-white/70">
-                    {data.arrival.airport.split(" ").slice(0, 2).join(" ")}
-                  </p>
+              </div>
+
+              {/* Weather Forecast */}
+              <div>
+                <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-3">
+                  5-Day Forecast
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                  {weatherData.forecast.map((day, index) => {
+                    const WeatherIcon = getWeatherIcon(day.icon);
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.8 + index * 0.1 }}
+                        className="glass-surface p-3 rounded-xl border border-white/5 hover:border-teal-500/30 transition-colors"
+                      >
+                        <p className="text-[10px] font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-2">
+                          {day.date}
+                        </p>
+                        <div className="flex items-center justify-center mb-2">
+                          <WeatherIcon className="w-8 h-8 text-teal-500" />
+                        </div>
+                        <p className="text-xl font-jetbrains font-bold text-white text-center mb-1">
+                          {day.temp}°F
+                        </p>
+                        <p className="text-[9px] font-jetbrains text-white/60 text-center capitalize leading-tight">
+                          {day.description}
+                        </p>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
-
-            {/* Weather Forecast */}
-            <div>
-              <p className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-3">
-                5-Day Forecast
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                {weatherData.forecast.map((day, index) => {
-                  const WeatherIcon = getWeatherIcon(day.icon);
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.8 + index * 0.1 }}
-                      className="glass-surface p-3 rounded-xl border border-white/5 hover:border-teal-500/30 transition-colors"
-                    >
-                      <p className="text-[10px] font-cinzel text-silver-metallic/60 uppercase tracking-wider mb-2">
-                        {day.date}
-                      </p>
-                      <div className="flex items-center justify-center mb-2">
-                        <WeatherIcon className="w-8 h-8 text-teal-500" />
-                      </div>
-                      <p className="text-xl font-jetbrains font-bold text-white text-center mb-1">
-                        {day.temp}°F
-                      </p>
-                      <p className="text-[9px] font-jetbrains text-white/60 text-center capitalize leading-tight">
-                        {day.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
+            </motion.div>
+          ) : (
+            // Show error state for debugging
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="px-6 sm:px-8 py-4 border-t border-white/10"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <Cloud className="w-4 h-4 text-silver-metallic/40" />
+                <h4 className="text-xs font-cinzel text-silver-metallic/60 uppercase tracking-wider">
+                  Destination Intelligence
+                </h4>
               </div>
-            </div>
-          </motion.div>
+              <div className="p-3 bg-amber-electric/5 border border-amber-electric/20 rounded-lg">
+                <p className="text-xs font-jetbrains text-white/60">
+                  <strong className="text-amber-electric/80">Weather data unavailable:</strong>{" "}
+                  {weatherData.error || "Unable to fetch weather information"}
+                </p>
+              </div>
+            </motion.div>
+          )
         )}
 
         {/* Footer with Aircraft Tech Specs - Fallback Chain Implementation */}

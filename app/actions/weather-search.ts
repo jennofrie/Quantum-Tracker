@@ -63,9 +63,10 @@ export async function getDestinationWeather(
   timezone: string
 ): Promise<WeatherData> {
   if (!API_KEY) {
+    console.error("OPENWEATHERMAP_API_KEY is not set");
     return {
       success: false,
-      error: "Weather API key not configured",
+      error: "Weather API key not configured. Please set OPENWEATHERMAP_API_KEY in environment variables.",
     };
   }
 
@@ -74,9 +75,10 @@ export async function getDestinationWeather(
     const cityName = AIRPORT_CITY_MAP[arrivalIata];
     
     if (!cityName) {
+      console.warn(`Airport ${arrivalIata} not found in city mapping`);
       return {
         success: false,
-        error: "Weather data not available for this airport",
+        error: `Weather data not available for airport ${arrivalIata}. Airport may not be in the mapping database.`,
       };
     }
 
