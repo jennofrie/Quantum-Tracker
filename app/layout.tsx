@@ -24,6 +24,15 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Quantum Tracker | Global Flight Intelligence",
   description: "Precision data for informed travel decisions with industrial luxury aesthetics.",
+  icons: {
+    apple: "/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Quantum Tracker",
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

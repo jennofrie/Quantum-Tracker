@@ -40,7 +40,7 @@ Your repository already exists at: `https://github.com/jennofrie/Quantum-Tracker
 ```bash
 git remote add origin https://github.com/jennofrie/Quantum-Tracker.git
 git branch -M main
-git push -u origin main
+`git push -u origin main`
 ```
 
 ### Phase 2: Netlify Deployment
